@@ -257,4 +257,26 @@ body.lang-ja {
         width: 100%;
         padding: 30px;
     }
+
+    /* Mobile Lightbox Adjustments */
+    .lightbox .prev-btn,
+    .lightbox .next-btn {
+        display: none !important; /* Hide arrows on mobile */
+    }
+
+    .lightbox .close-btn {
+        position: fixed !important;
+        top: 16px !important;
+        right: 20px !important;
+        font-size: 2.5rem !important;
+        color: #1a1a1a !important;
+        z-index: 10000 !important;
+    }
+
+    .lightbox img,
+    .lightbox video {
+        max-width: 90vw !important;
+        max-height: 80vh !important;
+        object-fit: contain;
+    }
 }
