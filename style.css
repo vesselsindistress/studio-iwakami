@@ -1,0 +1,260 @@
+/* 1. All @import rules MUST be at the very top of the file */
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+
+/* Always reserve vertical scrollbar space to prevent layout shifting between long and short pages */
+html {
+    overflow-y: scroll;
+}
+
+/* Base Styles */
+body {
+    font-family: 'EB Garamond', serif;
+    margin: 0;
+    padding: 0;
+    color: #1a1a1a;
+    background-color: #fdfdfd;
+    display: flex;
+}
+
+a {
+    text-decoration: none;
+    color: #1a1a1a;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #666;
+}
+
+/* Apply Noto Sans JP to pages with the lang-ja body class */
+body.lang-ja {
+    font-family: 'Noto Sans JP', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Sidebar Navigation */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    padding: 50px 30px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    justify-content: space-between;
+    background-color: #fdfdfd;
+}
+
+.company-name {
+    font-family: 'EB Garamond', serif !important;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.main-nav li {
+    margin-bottom: 8px; /* Clean spacing between menu items */
+    font-size: 1rem;
+    line-height: 1.2;
+}
+
+.main-nav a {
+    display: inline-block;
+}
+
+/* EN | JP Switcher UI */
+.lang-switcher {
+    margin-top: 16px; /* Separates switcher cleanly below the last menu item */
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    font-family: 'EB Garamond', serif !important;
+}
+
+.lang-link {
+    text-decoration: none;
+    color: #1a1a1a;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.lang-link:hover {
+    opacity: 0.8;
+}
+
+.lang-link.active {
+    opacity: 0.4;
+    font-weight: 600;
+    pointer-events: none;
+}
+
+.divider {
+    margin: 0 4px;
+    opacity: 0.3;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    font-size: 1.2rem;
+}
+
+/* Main Content */
+.content {
+    margin-left: 250px;
+    padding: 60px 10% 60px 60px;
+    width: auto;
+    max-width: 1200px;
+    box-sizing: border-box;
+    min-height: 100vh;
+    font-size: 1.1rem;
+    text-align: justify;
+}
+
+/* Vertical Image Gallery */
+.gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 800px;
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+    cursor: zoom-in;
+    transition: opacity 0.3s ease;
+}
+
+.gallery img:hover {
+    opacity: 0.8;
+}
+
+/* Lightbox/Gallery Mode */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox:target {
+    display: flex;
+}
+
+.lightbox img,
+.lightbox video {
+    max-width: 80vw;
+    max-height: 90vh;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    z-index: 2;
+    object-fit: contain;
+}
+
+.close-btn {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 3rem;
+    font-family: sans-serif;
+    color: #1a1a1a;
+    text-decoration: none;
+}
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3.5rem;
+    font-family: sans-serif;
+    color: #1a1a1a;
+    text-decoration: none;
+    padding: 20px;
+    transition: color 0.3s ease, transform 0.2s ease;
+    user-select: none;
+}
+
+.nav-btn:hover {
+    color: #666;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+    left: 3%;
+}
+
+.next-btn {
+    right: 3%;
+}
+
+/* CV Button */
+.cv-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 25px;
+    border: 1px solid #1a1a1a;
+    background: transparent;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cv-btn:hover {
+    background: #1a1a1a;
+    color: #fdfdfd;
+}
+
+@media (min-width: 1600px) {
+    .content {
+        padding-right: 500px;
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid #eaeaea;
+        padding: 30px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .company-name {
+        margin-bottom: 20px;
+    }
+    
+    .social-links {
+        margin-top: 30px;
+        justify-content: center;
+    }
+    
+    .content {
+        margin-left: 0;
+        width: 100%;
+        padding: 30px;
+    }
+}
