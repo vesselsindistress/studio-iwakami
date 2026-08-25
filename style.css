@@ -138,36 +138,22 @@ body.lang-ja {
     opacity: 0.8;
 }
 
-/* Lightbox Container with Swipe Support */
+/* Lightbox/Gallery Mode */
 .lightbox {
     display: none;
     position: fixed;
-    z-index: 9999;
+    z-index: 999;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background-color: rgba(255, 255, 255, 0.95);
-
-    /* Enable CSS Swipe & Snapping */
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch; /* Smooth inertia scrolling for iOS Safari */
+    justify-content: center;
+    align-items: center;
 }
 
 .lightbox:target {
     display: flex;
-}
-
-/* Individual Slide Layer */
-.lightbox-slide {
-    flex: 0 0 100vw; /* Forces each slide to take up full viewport width */
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    scroll-snap-align: center; /* Automatically snaps media to center when swiped */
 }
 
 .lightbox img,
@@ -175,6 +161,7 @@ body.lang-ja {
     max-width: 80vw;
     max-height: 90vh;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    z-index: 2;
     object-fit: contain;
 }
 
