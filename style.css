@@ -261,8 +261,12 @@ body.lang-ja {
     /* Mobile Lightbox Adjustments */
     .lightbox .prev-btn,
     .lightbox .next-btn {
-        display: none !important; /* Hide arrows on mobile */
-    }
+    display: block !important;
+    background: none !important; /* Removes solid circle */
+    font-size: 2rem !important;
+    color: rgba(26, 26, 26, 0.4) !important; /* Subtle tint */
+    padding: 10px !important;
+  }
 
     .lightbox .close-btn {
         position: fixed !important;
