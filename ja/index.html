@@ -738,39 +738,74 @@
 
 <script>
   let touchStartX = 0;
-  let touchEndX = 0;
+  let touchStartY = 0;
+  let isSwipeGesture = false; // false once we know it's a pinch or a vertical drag
+  let swipeLocked = false;    // prevents a second nav firing before the hash/DOM settles
 
   document.addEventListener('touchstart', (e) => {
+    // Ignore multi-touch (pinch-zoom) entirely
+    if (e.touches.length > 1) {
+      isSwipeGesture = false;
+      return;
+    }
+    isSwipeGesture = true;
     touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+  }, { passive: true });
+
+  document.addEventListener('touchmove', (e) => {
+    // A second finger appearing mid-gesture means it became a pinch — cancel the swipe
+    if (e.touches.length > 1) {
+      isSwipeGesture = false;
+    }
   }, { passive: true });
 
   document.addEventListener('touchend', (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
+    if (!isSwipeGesture || swipeLocked) return;
+    const touchEndX = e.changedTouches[0].screenX;
+    const touchEndY = e.changedTouches[0].screenY;
+    handleSwipe(touchEndX, touchEndY);
   }, { passive: true });
 
-  function handleSwipe() {
+  function handleSwipe(touchEndX, touchEndY) {
     const activeLightbox = document.querySelector('.lightbox:target');
     if (!activeLightbox) return;
 
     const swipeThreshold = 50; // Minimum distance in pixels to trigger a swipe
-    const diff = touchEndX - touchStartX;
+    const diffX = touchEndX - touchStartX;
+    const diffY = touchEndY - touchStartY;
 
-    if (diff < -swipeThreshold) {
-      // Swiped Left -> Go to Next Image
-      const nextBtn = activeLightbox.querySelector('.next-btn');
-      if (nextBtn) {
-        const target = nextBtn.getAttribute('href');
-        if (target) window.location.hash = target;
-      }
-    } else if (diff > swipeThreshold) {
-      // Swiped Right -> Go to Previous Image
-      const prevBtn = activeLightbox.querySelector('.prev-btn');
-      if (prevBtn) {
-        const target = prevBtn.getAttribute('href');
-        if (target) window.location.hash = target;
-      }
-    }
+    // If the drag was more vertical than horizontal, treat it as a scroll/dismiss
+    // attempt, not a swipe — otherwise up/down drags misfire as prev/next.
+    if (Math.abs(diffY) > Math.abs(diffX)) return;
+
+    if (Math.abs(diffX) < swipeThreshold) return;
+
+    const selector = diffX < 0 ? '.next-btn' : '.prev-btn'; // left = next, right = prev
+    const btn = activeLightbox.querySelector(selector);
+    if (!btn) return;
+    const target = btn.getAttribute('href');
+    if (!target) return;
+
+    swipeLocked = true;
+    window.location.hash = target;
+    preloadAdjacent(target);
+    // Release the lock after the hash-driven :target swap has taken effect
+    setTimeout(() => { swipeLocked = false; }, 250);
+  }
+
+  // Warm the cache for the images one swipe further out, so fast swiping
+  // doesn't show a blank frame while a lazy-loaded image fetches.
+  function preloadAdjacent(hashTarget) {
+    const el = document.querySelector(hashTarget);
+    if (!el) return;
+    ['.prev-btn', '.next-btn'].forEach(sel => {
+      const link = el.querySelector(sel);
+      if (!link) return;
+      const neighbor = document.querySelector(link.getAttribute('href'));
+      const img = neighbor && neighbor.querySelector('img');
+      if (img && !img.src) img.src = img.getAttribute('src');
+    });
   }
 </script>
 

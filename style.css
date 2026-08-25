@@ -150,6 +150,11 @@ body.lang-ja {
     background-color: rgba(255, 255, 255, 0.95);
     justify-content: center;
     align-items: center;
+    /* Claim horizontal gestures for our own swipe handler; still allow
+       vertical panning so pinch-zoomed images can be scrolled. */
+    touch-action: pan-y;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .lightbox:target {
