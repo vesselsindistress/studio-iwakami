@@ -179,7 +179,7 @@
     <div class="lightbox" id="2-5">
         <a href="#cover-2" class="close-btn">&times;</a>
         <a href="#2-4" class="nav-btn prev-btn">&#10094;</a>
-        <video autoplay muted loop playsinline>
+        <video muted loop playsinline>
         <source src="../images/02-bv-window/bv-window-05.mp4" type="video/mp4">
         </video>
         <a href="#2-6" class="nav-btn next-btn">&#10095;</a>
@@ -246,7 +246,7 @@
     <div class="lightbox" id="3-8">
         <a href="#cover-3" class="close-btn">&times;</a>
         <a href="#3-7" class="nav-btn prev-btn">&#10094;</a>
-        <video autoplay muted loop playsinline>
+        <video muted loop playsinline>
         <source src="../images/03-bv-trolley/bv-trolley-08.mp4" type="video/mp4">
         </video>
         <a href="#3-1" class="nav-btn next-btn">&#10095;</a>
@@ -300,7 +300,7 @@
 
     <div class="lightbox" id="5-1">
         <a href="#cover-5" class="close-btn">&times;</a>
-        <a href="#5-22" class="nav-btn prev-btn">&#10094;</a>
+        <a href="#5-21" class="nav-btn prev-btn">&#10094;</a>
         <img src="../images/05-bv-showroom/bv-showroom-01.webp" alt="bv-showroom-01" loading="lazy">
         <a href="#5-2" class="nav-btn next-btn">&#10095;</a>
     </div>
@@ -427,7 +427,7 @@
     <div class="lightbox" id="5-19">
         <a href="#cover-5" class="close-btn">&times;</a>
         <a href="#5-18" class="nav-btn prev-btn">&#10094;</a>
-        <video autoplay muted loop playsinline>
+        <video muted loop playsinline>
         <source src="../images/05-bv-showroom/bv-showroom-19.mp4" type="video/mp4">
         </video>
         <a href="#5-20" class="nav-btn next-btn">&#10095;</a>
@@ -494,7 +494,7 @@
     <div class="lightbox" id="6-7">
         <a href="#cover-6" class="close-btn">&times;</a>
         <a href="#6-6" class="nav-btn prev-btn">&#10094;</a>
-        <video autoplay muted loop playsinline>
+        <video muted loop playsinline>
         <source src="../images/06-bv-hanger/bv-hanger-07.mp4" type="video/mp4">
         </video>
         <a href="#6-1" class="nav-btn next-btn">&#10095;</a>
@@ -714,7 +714,7 @@
     <div class="lightbox" id="10-12">
         <a href="#cover-10" class="close-btn">&times;</a>
         <a href="#10-11" class="nav-btn prev-btn">&#10094;</a>
-        <video autoplay muted loop playsinline>
+        <video muted loop playsinline>
         <source src="../images/10-lanvin-xmas/lanvin-xmas-12.mp4" type="video/mp4">
         </video>
         <a href="#10-1" class="nav-btn next-btn">&#10095;</a>
@@ -735,6 +735,26 @@
         <img src="../images/11-dsm/dsm-02.webp" alt="dsm-02" loading="lazy">
         <a href="#11-1" class="nav-btn next-btn">&#10095;</a>
     </div>
+
+<script>
+      window.addEventListener('hashchange', () => {
+        // Pause all videos when switching lightboxes or closing
+        document.querySelectorAll('.lightbox video').forEach(video => {
+          video.pause();
+          video.currentTime = 0;
+        });
+
+        // Play only the active lightbox video
+        const activeLightbox = document.querySelector('.lightbox:target');
+        if (activeLightbox) {
+          const video = activeLightbox.querySelector('video');
+          if (video) {
+            video.muted = true;
+            video.play().catch(err => console.log('Autoplay blocked:', err));
+          }
+        }
+      });
+    </script>
 
 </body>
 </html>
