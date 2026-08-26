@@ -201,24 +201,6 @@ body.lang-ja {
     right: 3%;
 }
 
-/* CV Button */
-.cv-btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 25px;
-    border: 1px solid #1a1a1a;
-    background: transparent;
-    font-family: 'EB Garamond', serif;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.cv-btn:hover {
-    background: #1a1a1a;
-    color: #fdfdfd;
-}
-
 @media (min-width: 1600px) {
     .content {
         padding-right: 500px;
