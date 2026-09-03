@@ -23,6 +23,8 @@ body {
     color: #1a1a1a;
     background-color: #fdfdfd;
     display: flex;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -37,7 +39,7 @@ a:hover {
 
 body.lang-ja {
     font-family: 'EB Garamond', 'kokoro', sans-serif;
-    -webkit-font-smoothing: antialiased;
+    
 }
 
 /* Sidebar Navigation */
@@ -123,7 +125,7 @@ body.lang-ja {
 /* Main Content */
 .content {
     margin-left: 250px;
-    padding: 60px 10% 60px 60px;
+    padding: 60px 60px 60px 60px;
     width: auto;
     max-width: 1200px;
     box-sizing: border-box;
