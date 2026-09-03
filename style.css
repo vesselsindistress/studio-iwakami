@@ -128,6 +128,7 @@ body.lang-ja {
     padding: 60px 60px 60px 60px;
     width: auto;
     max-width: 1200px;
+    min-width: 0;
     box-sizing: border-box;
     min-height: 100vh;
     font-size: 1.1rem;
@@ -171,6 +172,8 @@ body.lang-ja {
 }
 
 .gallery-02 {
+    width: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
     gap: 40px;
