@@ -7,7 +7,7 @@
     src: url('fonts/kokoro.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
-    font-display: swap;
+    font-display: block;
 }
 
 /* Always reserve vertical scrollbar space to prevent layout shifting between long and short pages */
