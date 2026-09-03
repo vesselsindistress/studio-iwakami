@@ -1,5 +1,14 @@
 /* 1. All @import rules MUST be at the very top of the file */
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+
+/* Custom Japanese Webfont */
+@font-face {
+    font-family: 'kokoro'; 
+    src: url('fonts/kokoro.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
 
 /* Always reserve vertical scrollbar space to prevent layout shifting between long and short pages */
 html {
@@ -26,9 +35,8 @@ a:hover {
     color: #cccccc;
 }
 
-/* Apply Noto Sans JP to pages with the lang-ja body class */
 body.lang-ja {
-    font-family: 'EB Garamond', 'Noto Sans JP', sans-serif;
+    font-family: 'EB Garamond', 'kokoro', sans-serif;
     -webkit-font-smoothing: antialiased;
 }
 
