@@ -172,12 +172,16 @@ body.lang-ja {
 }
 
 .gallery-02 {
-    width: 100%;
-    height: auto;
     display: flex;
     flex-direction: column;
     gap: 40px;
     max-width: 800px;
+}
+
+.gallery-02 img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 /* Lightbox/Gallery Mode */
