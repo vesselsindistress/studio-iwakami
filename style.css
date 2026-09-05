@@ -10,6 +10,14 @@
     font-display: block;
 }
 
+@font-face {
+    font-family: 'eb-garamond-08-reg'; 
+    src: url('fonts/eb-garamond-08-reg.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
 /* Always reserve vertical scrollbar space to prevent layout shifting between long and short pages */
 html {
     overflow-y: scroll;
@@ -17,7 +25,7 @@ html {
 
 /* Base Styles */
 body {
-    font-family: 'EB Garamond', serif;
+    font-family: 'EB Garamond', 'eb-garamond-08-reg', serif;
     margin: 0;
     padding: 0;
     color: #1a1a1a;
@@ -38,7 +46,7 @@ a:hover {
 }
 
 body.lang-ja {
-    font-family: 'EB Garamond', 'kokoro', sans-serif;
+    font-family: 'EB Garamond', 'eb-garamond-08-reg', 'kokoro', sans-serif;
     
 }
 
@@ -47,7 +55,7 @@ body.lang-ja {
     position: fixed;
     top: 0;
     left: 0;
-    width: 250px;
+    width: 300px;
     height: 100vh;
     padding: 50px 30px;
     box-sizing: border-box;
@@ -59,10 +67,19 @@ body.lang-ja {
 }
 
 .company-name {
-    font-family: 'EB Garamond', serif !important;
+    font-family: 'eb-garamond-08-reg', serif !important;
     font-size: 1.4rem;
-    margin-bottom: 20px;
+    margin-bottom: 1px;
     letter-spacing: 1px;
+}
+
+.slogan {
+    font-family: 'EB Garamond', serif !important;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #666666;
+    
+    
 }
 
 .main-nav ul {
@@ -124,7 +141,7 @@ body.lang-ja {
 
 /* Main Content */
 .content {
-    margin-left: 250px;
+    margin-left: 300px;
     padding: 60px 60px 60px 60px;
     width: auto;
     max-width: 1200px;
