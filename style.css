@@ -158,7 +158,6 @@ body.lang-ja {
     flex-direction: column;
     gap: 40px;
     max-width: 800px;
-    background-color: #fdfdfd;
 }
 
 .gallery img {
@@ -167,6 +166,7 @@ body.lang-ja {
     cursor: zoom-in;
     transition: opacity 0.3s ease;
     color: transparent;
+    background-color: #fdfdfd;
 }
 
 .gallery img:hover {
@@ -178,7 +178,6 @@ body.lang-ja {
     flex-direction: column;
     gap: 40px;
     max-width: 800px;
-    background-color: #fdfdfd;
 }
 
 .gallery-02 img {
@@ -186,6 +185,7 @@ body.lang-ja {
     height: auto;
     display: block;
     color: transparent;
+    background-color: #fdfdfd;
 }
 
 /* Lightbox/Gallery Mode */
