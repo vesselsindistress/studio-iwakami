@@ -206,13 +206,35 @@ body.lang-ja {
     display: flex;
 }
 
-.lightbox img,
-.lightbox video {
+/* Handles BOTH plain images and wrapped images/videos */
+.lightbox > img,
+.lightbox > video,
+.lightbox-content img,
+.lightbox-content video {
     max-width: 80vw;
-    max-height: 90vh;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    z-index: 2;
+    max-height: 80vh;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     object-fit: contain;
+    z-index: 2;
+}
+
+/* Flex container used ONLY when a caption is present */
+.lightbox-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.lightbox-caption {
+    margin: 14px 0 0 0;
+    font-family: 'EB Garamond', serif;
+    font-size: 0.9rem;
+    color: #666666;
+    letter-spacing: 0.5px;
+    text-align: center;
+    font-style: italic;
 }
 
 .close-btn {
@@ -325,10 +347,12 @@ body.lang-ja {
     }
 
     /* Constrain media slightly so arrows sit cleanly in the side margins */
-    .lightbox img,
-    .lightbox video {
+    .lightbox-content {
         max-width: 82vw !important;
-        max-height: 80vh !important;
-        object-fit: contain;
+    }
+    
+    .lightbox-content img,
+    .lightbox-content video {
+        max-height: 75vh !important;
     }
 }
