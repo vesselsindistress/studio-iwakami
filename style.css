@@ -47,7 +47,10 @@ a:hover {
 
 body.lang-ja {
     font-family: 'EB Garamond', 'eb-garamond-08-reg', 'kokoro', sans-serif;
-    
+}
+
+body.lang-ja .content {
+    text-align: left;
 }
 
 /* Sidebar Navigation */
@@ -154,7 +157,8 @@ body.lang-ja {
 
 .purchase-btn {
     display: inline-block;
-    margin-top: 20px;
+    
+    margin-bottom: 15px;
     padding: 10px 25px;
     border: 1px solid #1a1a1a;
     background: transparent;
