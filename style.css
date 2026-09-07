@@ -53,12 +53,6 @@ body.lang-ja .content {
     text-align: left;
 }
 
-mark.highlight {
-    background-color: #fff7ed;
-    padding: 6px 12px;
-    border-radius: 3px;
-}
-
 /* Sidebar Navigation */
 .sidebar {
     position: fixed;
@@ -87,6 +81,10 @@ mark.highlight {
     font-size: 1rem;
     margin-bottom: 20px;
     color: #666666;
+}
+
+.heading {
+    font-size: 1.3em;
 }
 
 .main-nav ul {
